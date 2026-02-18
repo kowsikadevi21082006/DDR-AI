@@ -41,8 +41,9 @@ export default function Home() {
     formData.append('inspection', inspectionFile);
     formData.append('thermal', thermalFile);
 
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
     try {
-      const response = await fetch('http://localhost:8000/generate-ddr/', {
+      const response = await fetch(`${apiUrl}/generate-ddr/`, {
         method: 'POST',
         body: formData,
       });
